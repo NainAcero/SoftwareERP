@@ -30,6 +30,7 @@ class UsersTableSeeder extends Seeder
         $role->givePermissionTo(Permission::all());
 
         $user=User::where('email','admin@factur.com')->first();
+
         if(!$user){
             $user= User::firstOrCreate([
                 'name' => 'Admin',
@@ -43,8 +44,6 @@ class UsersTableSeeder extends Seeder
             ]);
         }
 
-
-
         if(!User::where('email','consumidor_final@gmail.com')->first()){
             $consumidor= User::firstOrCreate([
                 'name' => 'Consumidor Final',
@@ -57,8 +56,6 @@ class UsersTableSeeder extends Seeder
                 'direccion'=>'N/A',
             ]);
         }
-
-
 
         $user->assignRole($role);
     }
