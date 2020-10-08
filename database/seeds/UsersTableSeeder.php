@@ -29,21 +29,61 @@ class UsersTableSeeder extends Seeder
         Role::firstOrCreate(['name' => 'Vendedor']);
         $role->givePermissionTo(Permission::all());
 
-        $user=User::where('email','admin@factur.com')->first();
+        $user=User::where('email','xavi@erpclothes.com')->first();
         if(!$user){
             $user= User::firstOrCreate([
-                'name' => 'Admin',
-                'email' => 'admin@factur.com',
-                'password' => Hash::make('@dmin_factur'),
-                'nombres'=>'Admin',
-                'apellidos'=>'Admin',
+                'name' => 'Javier',
+                'email' => 'xavi@erpclothes.com',
+                'password' => Hash::make('@xavi'),
+                'nombres'=>'Javier',
+                'apellidos'=>'Jiménez Mendosa',
                 'identificacion'=>'000000000',
                 'telefono'=>'000000000',
                 'direccion'=>'N/A',
             ]);
         }
 
+        $user=User::where('email','xavi@erpclothes.com')->first();
+        if(!$user){
+            $user= User::firstOrCreate([
+                'name' => 'Javier',
+                'email' => 'xavi@erpclothes.com',
+                'password' => Hash::make('@xavi'),
+                'nombres'=>'Javier',
+                'apellidos'=>'Jiménez Mendosa',
+                'identificacion'=>'000000000',
+                'telefono'=>'000000000',
+                'direccion'=>'N/A',
+            ]);
+        }
 
+        $user=User::where('email','nain@erpclothes.com')->first();
+        if(!$user){
+            $user= User::firstOrCreate([
+                'name' => 'Nain',
+                'email' => 'nain@erpclothes.com',
+                'password' => Hash::make('@nain'),
+                'nombres'=>'Nain',
+                'apellidos'=>'Acero Mamani',
+                'identificacion'=>'000000000',
+                'telefono'=>'000000000',
+                'direccion'=>'N/A',
+            ]);
+        }
+
+        $user=User::where('email','liz@erpclothes.com')->first();
+        if(!$user){
+            $user= User::firstOrCreate([
+                'name' => 'Liz',
+                'email' => 'liz@erpclothes.com',
+                'password' => Hash::make('@liz'),
+                'nombres'=>'Liz',
+                'apellidos'=>'Tesillo Goméz',
+                'identificacion'=>'000000000',
+                'telefono'=>'000000000',
+                'direccion'=>'N/A',
+            ]);
+        }
 
         if(!User::where('email','consumidor_final@gmail.com')->first()){
             $consumidor= User::firstOrCreate([
