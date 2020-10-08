@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('layouts.app',['title'=>'Restablecer contraseña'])
+@section('breadcrumbs', Breadcrumbs::render('resetPassword'))
 
 @section('content')
 <div class="container">
@@ -44,4 +45,10 @@
         </div>
     </div>
 </div>
+
+@prepend('linksPie')
+    <script>
+    $('#menuLogin').addClass('active');
+    </script>
+@endprepend
 @endsection

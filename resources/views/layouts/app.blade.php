@@ -7,98 +7,88 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'ERP') }}</title>
+    <title>{{ ucfirst($title ?? '') }} | {{ config('app.name', 'Clinica-Utc') }}</title>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    <!-- MDB icon -->
+    <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('img/favicon.ico') }}" type="image/x-icon">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ asset('fontawesome-free-5.12.1-web/css/all.min.css') }}">
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="{{asset('roboto.css')}}">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{{ asset('mdb/css/bootstrap.min.css') }}">
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="{{ asset('mdb/css/mdb.min.css') }}">
+    <!-- Your custom styles (optional) -->
+    <link rel="stylesheet" href="{{ asset('mdb/css/style.css') }}">
+
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="{{ asset('mdb/js/jquery.min.js') }}"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="{{ asset('mdb/js/popper.min.js') }}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{{ asset('mdb/js/bootstrap.min.js') }}"></script>
+
+    <!-- notify -->
+    <script src="{{ asset('js/notify.min.js') }}"></script>
+
+    <!-- alertify -->
+    <link rel="stylesheet" href="{{ asset('js/jquery-confirm-v3.3.4/dist/jquery-confirm.min.css') }}">
+    <script src="{{ asset('js/jquery-confirm-v3.3.4/dist/jquery-confirm.min.js') }}"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+    <script>
+		$.ajaxSetup({
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			}
+		});
+    </script>
 
-    @stack('styles')
+    @stack('linksCabeza')
+
+
+
 
 </head>
 <body>
 
     <div id="app">
 
-        <header>
-            <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-                <div class="container">
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name') }}
-                    </a>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name') }}
+                </a>
 
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                    <div class="collapse navbar-collapse" id="navbarContent">
-                        <!-- Left Side of Navbar -->
-                        <ul class="navbar-nav mr-auto">
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <!-- Left Side of Navbar -->
+                    <ul class="navbar-nav mr-auto">
 
-                        </ul>
+                    </ul>
 
-                        <!-- Right Side of Navbar -->
-                        <ul class="navbar-nav ml-auto">
+                    <!-- Right Side of Navbar -->
+                    <ul class="navbar-nav ml-auto">
 
-                            @guest
-                                <li><a class="nav-link" href="{{ route('login') }}">{{ __("Iniciar sessión") }}</a></li>
-                                <li><a class="nav-link" href="{{ route('register') }}">{{ __("Registrarme") }}</a></li>
-                            @else
-                                @auth
-                                    <li><a class="nav-link" href="{{ route('home') }}">{{ __("Inicio") }}</a></li>
+                        @guest
+                            <li><a class="nav-link" href="{{ route('login') }}">{{ __("Iniciar sessión") }}</a></li>
+                        @else
+                            @auth
+                                <li><a class="nav-link" href="{{ route('home') }}">{{ __("Inicio") }}</a></li>
 
-                                    @can('G. Usuarios')
-                                        <li><a class="nav-link" href="{{ route('home') }}">{{ __("Usuarios") }}</a></li>
-                                    @endcan
+                                @can('G. Usuarios')
+                                    <li><a class="nav-link" href="{{ route('usuarios') }}">{{ __("Usuarios") }}</a></li>
+                                @endcan
 
-                                    @can('G. Almacén')
-                                        <li class="nav-item dropdown">
-                                            <a
-                                                class="nav-link dropdown-toggle"
-                                                href="#"
-                                                data-toggle="dropdown"
-                                                aria-haspopup="true"
-                                                aria-expanded="false"
-                                            >
-                                                {{ __("Almacén") }} <span class="caret"></span>
-                                            </a>
-
-                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <a class="dropdown-item"  href="#" > {{ __("Categorías") }} </a>
-                                                <a class="dropdown-item"  href="#" > {{ __("Productos") }} </a>
-
-                                            </div>
-                                        </li>
-                                    @endcan
-
-                                    @can('G. Ventas')
-                                        <li class="nav-item dropdown">
-                                            <a
-                                                class="nav-link dropdown-toggle"
-                                                href="#"
-                                                data-toggle="dropdown"
-                                                aria-haspopup="true"
-                                                aria-expanded="false"
-                                            >
-                                                {{ __("Ventas") }} <span class="caret"></span>
-                                            </a>
-
-                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <a class="dropdown-item"  href="#" > {{ __("Facturas") }} </a>
-
-                                            </div>
-                                        </li>
-                                    @endcan
-
-                                    @role('Administrador')
-                                        <li><a class="nav-link" href="{{ route('home') }}">{{ __("Roles y Permisos") }}</a></li>
-                                    @endrole
-
+                                @can('G. Almacén')
                                     <li class="nav-item dropdown">
                                         <a
                                             class="nav-link dropdown-toggle"
@@ -107,74 +97,144 @@
                                             aria-haspopup="true"
                                             aria-expanded="false"
                                         >
-                                            {{ auth::user()->name }} <span class="caret"></span>
+                                            {{ __("Almacén") }} <span class="caret"></span>
                                         </a>
 
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item"  href="#" > {{ __("Mi Perfil") }} </a>
-                                            <a
-                                                class="dropdown-item"
-                                                href="{{ route('logout') }}"
-                                                onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();"
-                                            >
-                                                {{ __("Cerrar sessión") }}
-                                            </a>
+                                            <a class="dropdown-item"  href="categorias" > {{ __("Categorías") }} </a>
+                                            <a class="dropdown-item"  href="productos" > {{ __("Productos") }} </a>
 
-                                            <form action="{{ route('logout') }}" id="logout-form" method="POST" style="display:none">
-                                                @csrf
-                                            </form>
                                         </div>
                                     </li>
-                                @endauth
-                            @endguest
+                                @endcan
 
-                        </ul>
-                    </div>
+                                @can('G. Ventas')
+                                    <li class="nav-item dropdown">
+                                        <a
+                                            class="nav-link dropdown-toggle"
+                                            href="#"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false"
+                                        >
+                                            {{ __("Ventas") }} <span class="caret"></span>
+                                        </a>
+
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item"  href="facturas" > {{ __("Facturas") }} </a>
+
+                                        </div>
+                                    </li>
+                                @endcan
+
+                                @role('Administrador')
+                                    <li><a class="nav-link" href="{{ route('roles') }}">{{ __("Roles y Permisos") }}</a></li>
+                                @endrole
+
+                                <li class="nav-item dropdown">
+                                    <a
+                                        class="nav-link dropdown-toggle"
+                                        href="#"
+                                        data-toggle="dropdown"
+                                        aria-haspopup="true"
+                                        aria-expanded="false"
+                                    >
+                                        {{ auth::user()->name }} <span class="caret"></span>
+                                    </a>
+
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item"  href="mi-perfil" > {{ __("Mi Perfil") }} </a>
+                                        <a
+                                            class="dropdown-item"
+                                            href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();"
+                                        >
+                                            {{ __("Cerrar sessión") }}
+                                        </a>
+
+                                        <form action="{{ route('logout') }}" id="logout-form" method="POST" style="display:none">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </li>
+                            @endauth
+                        @endguest
+
+                    </ul>
                 </div>
-            </nav>
-        </header>
+            </div>
+        </nav>
+    </header>
 
-        <main class="mt-4">
+    <main>
+        @yield('jumbotron')
+        @yield('breadcrumbs')
 
-            @yield('breadcrumbs')
-
-            @if ($errors->any())
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-md-12">
-                            <div class="alert alert-dark alert-dismissible fade show" role="alert">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li><strong>{{ $error }}</strong></li>
-                                    @endforeach
-                                </ul>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
+        @if ($errors->any())
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        <div class="alert alert-dark alert-dismissible fade show" role="alert">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li><strong>{{ $error }}</strong></li>
+                                @endforeach
+                            </ul>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
                     </div>
                 </div>
+            </div>
+        @endif
+
+        @foreach (['success', 'warn', 'info', 'error'] as $msg)
+            @if(Session::has($msg))
+            <script>
+                $.notify("{{ Session::get($msg) }}", "{{ $msg }}");
+            </script>
             @endif
+        @endforeach
 
-            @foreach (['success', 'warn', 'info', 'error'] as $msg)
-                @if(Session::has($msg))
-                <script>
-                    $.notify("{{ Session::get($msg) }}", "{{ $msg }}");
-                </script>
-                @endif
-            @endforeach
+        @yield('content')
 
-            @yield('content')
-
-        </main>
+    </main>
 
     </div>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{{ asset('mdb/js/mdb.min.js') }}"></script>
+
+    @stack('linksPie')
+
+
+    <script>
+        $('[data-toggle="tooltip"]').tooltip();
+        $('table').on('draw.dt', function() {
+			$('[data-toggle="tooltip"]').tooltip();
+        });
+
+        function eliminar(arg){
+			var url=$(arg).data('url');
+			var msg=$(arg).data('title');
+			$.confirm({
+				title: msg,
+				content: 'No podra recuperar el contenido',
+				theme: 'modern',
+				type:'dark',
+				icon:'fas fa-trash',
+				closeIcon:true,
+				buttons: {
+					confirmar: function () {
+						location.replace(url);
+					}
+				}
+			});
+		}
+
+    </script>
 </body>
 </html>

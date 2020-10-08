@@ -1,78 +1,80 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+<p align="center"><img src="https://www.soysoftware.com/img/soysoftware.jpg"></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## ACERCA DE @factur
+Sistema de Almacén y Facturación totalmente 100% gratis.
+## Escribenos
 
-## About Laravel
+Necesitas algunos de nuestro servicio o productos. O quieres trabajar con nosotros por favor escribinos a info@soysoftware.com
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Patrocinadores
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Nos gustaría extender nuestro agradecimiento a los siguientes patrocinadores por financiar el desarrollo de algunos proyectos. Si está interesado en convertirse en patrocinador, escríbenos a info@soysoftware.com
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **[Sindicato de pastocalle](https://www.sindicatodepastocalle.com/)**
+- **[Universidad Técnica de Cotopaxi](http://www.utc.edu.ec/)**
+- **[Coorporación de asociaciones de Cotopaxi y Tungurahua](https://cactu.ec/)**
+- **[Cuerpo de bomberos de Latacunga](http://api-bomberoslatacunga.com/)**
+- **[..entre otros]**
 
-## Learning Laravel
+## Contribuyendo
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+¡Gracias por considerar contribuir en nuestros proyectos!. Un sincero agradecimiento.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Vulnerabilidades de seguridad
 
-## Laravel Sponsors
+Si descubre una vulnerabilidad de seguridad dentro de nuestros productos, envíe un correo electrónico a SOYSOFTWARE a través de info@soysoftware.com . Todas las vulnerabilidades de seguridad serán tratadas con prontitud.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Licencia
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+Algunos de nuestros productos es un software de código abierto con licencia de la [Licencia MIT](https://opensource.org/licenses/MIT).
 
-## Contributing
+## INSTALACIÓN
+Clonar proyecto
+```
+git clone https://github.com/soy-software/factur.git
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```
+Acceder por una terminal al directorio factur, clonado
+```
+cd PATH....
 
-## Code of Conduct
+```
+Instalar dependencias: Ingrese a su directorio de proyecto clonado e instale las dependencias
+```
+composer install
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```
+Crear archivo .env, copiar información de .env-example a .env y establecer credenciales
 
-## Security Vulnerabilities
+Migración y seeder de datos: Ejecute el siguiente comando en proyecto clonado
+```
+php artisan migrate:fresh --seed
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```
+Generar la clave para su aplicación
+```
+php artisan key:generate
 
-## License
+```
+Almacenamiento de archivos
+```
+php artisan storage:link
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```
+
+
+Listo, disfrutalo
+Ejecutar Proyecto:
+```
+php artisan serve
+
+```
+Ingresar a [http://localhost:8000/](http://localhost:8000/)
+
+Credenciales
+
+```
+Email:admin@factur.com
+Contraseña:@dmin_factur
+
+```

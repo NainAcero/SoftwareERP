@@ -1,23 +1,33 @@
-@extends('layouts.app')
-
+@extends('layouts.app',['title'=>'Bienvenido'])
+@section('breadcrumbs', Breadcrumbs::render('home'))
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
+<div style="height: 75vh">
+    <div class="flex-center flex-column">
+        @if (session('status'))
+        <div class="alert alert-success" role="alert">
+            {{ session('status') }}
         </div>
+    @endif
+
+    @auth
+    <div class="alert alert-success" role="alert">
+        Bienvenido, <strong>{{ Auth::user()->email }}</strong>
     </div>
-</div>
+    @endauth
+    </div>
+  </div>
+
+
+
+@push('linksCabeza')
+
+@endpush
+
+@prepend('linksPie')
+    <script>
+    $('#menuInicio').addClass('active');
+    </script>
+    
+@endprepend
+
 @endsection
