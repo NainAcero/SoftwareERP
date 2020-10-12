@@ -9,9 +9,6 @@
 
     <title>{{ ucfirst($title ?? '') }} | {{ config('app.name', 'Clinica-Utc') }}</title>
 
-    <!-- MDB icon -->
-    <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}" type="image/x-icon">
-    <link rel="icon" href="{{ asset('img/favicon.ico') }}" type="image/x-icon">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('fontawesome-free-5.12.1-web/css/all.min.css') }}">
     <!-- Google Fonts Roboto -->
@@ -49,8 +46,6 @@
     </script>
 
     @stack('linksCabeza')
-
-
 
 
 </head>
