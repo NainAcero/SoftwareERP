@@ -101,7 +101,7 @@
 
 
                         <!-- Sign up button -->
-                        <button class="btn btn-elegant my-2 btn-block" type="submit">Guardar</button>
+                        <button class="btn bg-dark text-white my-2 btn-block" type="submit">Guardar</button>
 
 
                     </form>
